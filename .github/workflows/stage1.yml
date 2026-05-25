@@ -28,7 +28,9 @@ jobs:
         cmake -G Ninja -S llvm -B stage1 ^
           -DLLVM_ENABLE_PROJECTS="clang" ^
           -DCMAKE_BUILD_TYPE=Release ^
-          -DLLVM_TARGETS_TO_BUILD="X86"
+          -DLLVM_TARGETS_TO_BUILD="X86" ^
+          -DCMAKE_C_COMPILER=cl.exe ^
+          -DCMAKE_CXX_COMPILER=cl.exe
 
     - name: Build TableGen Tools
       run: |
