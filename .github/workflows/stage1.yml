@@ -35,7 +35,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release ^
           -DLLVM_TARGETS_TO_BUILD="X86"
     
-        ninja -C stage1 llvm-tblgen clang-tblgen
+        ninja -C stage1 llvm-tblgen clang-tblgen lldb-tblgen
 
 
 
