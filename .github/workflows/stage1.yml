@@ -40,9 +40,9 @@ jobs:
 
 
 
-    - name: Build TableGen Tools
-      run: |
-        ninja -C stage1 llvm-tblgen clang-tblgen
+    # - name: Build TableGen Tools
+    #   run: |
+    #     ninja -C stage1 llvm-tblgen clang-tblgen
 
     - name: Upload Stage1 TableGen Tools
       uses: actions/upload-artifact@v4
