@@ -23,16 +23,20 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@v4
 
-    - name: Configure Stage1 LLVM (with MSVC)
+    - name: Configure + Build Stage1 LLVM
       shell: cmd
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=x64
+    
+        echo INCLUDE=%INCLUDE%
+    
         cmake -G Ninja -S llvm -B stage1 ^
           -DLLVM_ENABLE_PROJECTS="clang" ^
           -DCMAKE_BUILD_TYPE=Release ^
-          -DLLVM_TARGETS_TO_BUILD="X86" ^
-          -DCMAKE_C_COMPILER=cl.exe ^
-          -DCMAKE_CXX_COMPILER=cl.exe
+          -DLLVM_TARGETS_TO_BUILD="X86"
+    
+        ninja -C stage1 llvm-tblgen clang-tblgen
+
 
 
 
